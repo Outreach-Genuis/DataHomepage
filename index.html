@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OutreachGenius | AI-Powered Lead Generation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+            const [annualPricing, setAnnualPricing] = React.useState(true);
+
+            const products = [
+                {
+                    title: "RevealerGenius",
+                    icon: "eye",
+                    features: ["Real-time visitor tracking", "Contact details enrichment", "CRM integration"],
+                    color: "indigo"
+                },
+                {
+                    title: "Solomon Search",
+                    icon: "robot",
+                    features: ["AI-powered search", "300M+ B2B records", "Custom filters"],
+                    color: "emerald"
+                },
+                {
+                    title: "MarketPulse",
+                    icon: "heartbeat",
+                    features: ["Buyer intent signals", "Competitor analysis", "Campaign analytics"],
+                    color: "amber"
+                }
+            ];
+
+            return (
+                <div className="min-h-screen">
+                    {/* Navigation */}
+                    <nav className="sticky top-0 bg-white shadow-sm z-50">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex justify-between h-16 items-center">
+                                <div className="flex items-center space-x-2">
+                                    <img src="logo.webp" alt="OutreachGenius Logo" className="h-8 w-auto" />
+                                </div>
+
+                                <div className="hidden md:flex items-center space-x-8">
+                                    <a href="#" className="text-gray-600 hover:text-indigo-500">Products</a>
+                                    <a href="#" className="text-gray-600 hover:text-indigo-500">Solutions</a>
+                                    <a href="#" className="text-gray-600 hover:text-indigo-500">Resources</a>
+                                    <a href="https://outreachgenius.ai/auth/sign-in" className="text-indigo-500 hover:text-indigo-600 font-medium">Login</a>
+                                    <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                                        onClick={
+                                            () => window.location.href = "https://outreachgenius.ai/auth/sign-up"
+                                        }
+                                    >
+                                        Get Started
+                                    </button>
+                                </div>
+
+                                <div className="md:hidden flex items-center">
+                                    <a href="#" className="text-indigo-500 mr-4">Login</a>
+                                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
+                                        <i className="fas fa-bars text-gray-600"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                        <div className="md:hidden bg-white p-4">
+                            <div className="space-y-4">
+                                <a href="#" className="block text-gray-600">Products</a>
+                                <a href="#" className="block text-gray-600">Solutions</a>
+                                <a href="#" className="block text-gray-600">Resources</a>
+                                <a href="#" className="block text-gray-600">Pricing</a>
+                                <button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium mt-2">
+                                    Get Started
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Hero Section */}
+                    <div className="relative overflow-hidden">
+                        <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 text-center">
+                            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                                <span className="gradient-text">Supercharge</span> Your<br />
+                                Lead Generation
+                            </h1>
+                            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                                AI-powered tools to identify, engage, and convert high-value prospects
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center gap-4">
+                                <button
+
+                                    className="bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-xl font-medium transition-all">
+                                    Book a Call
+                                </button>
+                                <button
+                                    onClick={() => window.location.href = "https://outreachgenius.ai/auth/sign-in"}
+                                    className="border-2 border-gray-200 hover:border-indigo-500 text-gray-600 px-8 py-4 rounded-xl font-medium transition-all">
+                                    Login to Dashboard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Products Section */}
+                    <div className="py-16 bg-indigo-50">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl font-bold mb-4">Our Solutions</h2>
+                                <p className="text-gray-600 max-w-xl mx-auto">
+                                    Cutting-edge tools powered by artificial intelligence
+                                </p>
+                            </div>
+
+                            <div className="grid md:grid-cols-3 gap-8">
+                                {products.map((product, index) => (
+                                    <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                                        <div className={`w-14 h-14 rounded-xl bg-${product.color}-100 mb-6 flex items-center justify-center`}>
+                                            <i className={`fas fa-${product.icon} text-${product.color}-500 text-xl`}></i>
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-4">{product.title}</h3>
+                                        <ul className="space-y-3 mb-6">
+                                            {product.features.map((feature, i) => (
+                                                <li key={i} className="flex items-center text-gray-600">
+                                                    <i className="fas fa-check-circle text-emerald-500 mr-2"></i>
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <button className={`w-full mt-4 bg-${product.color}-500 hover:bg-${product.color}-600 text-white py-3 rounded-lg font-medium transition-colors`}>
+                                            Learn More
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Features Section */}
+                    <div className="py-16">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="grid md:grid-cols-2 gap-12 items-center">
+                                <div className="relative">
+                                    <div className="animate-float">
+                                        <div className="bg-gradient-to-br from-indigo-500 to-emerald-500 p-1 rounded-2xl inline-block">
+                                            <div className="bg-white rounded-xl p-4">
+                                                <video controls className="rounded-lg">
+                                                    <source src="https://videos.files.wordpress.com/Lg4U5f4n/lv_0_20240627150806.mp4" type="video/mp4" />
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h2 className="text-3xl font-bold mb-6">Transform Your Outreach</h2>
+                                    <div className="space-y-6">
+                                        <div className="flex items-start">
+                                            <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center mr-4">
+                                                <i className="fas fa-brain text-indigo-500"></i>
+                                            </div>
+                                            <div>
+                                                <h3 className="font-semibold mb-2">AI-Powered Insights</h3>
+                                                <p className="text-gray-600">
+                                                    Machine learning algorithms analyze millions of data points to deliver actionable insights
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center mr-4">
+                                                <i className="fas fa-chart-line text-emerald-500"></i>
+                                            </div>
+                                            <div>
+                                                <h3 className="font-semibold mb-2">Real-time Analytics</h3>
+                                                <p className="text-gray-600">
+                                                    Get up-to-the-minute data on your lead generation performance
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center mr-4">
+                                                <i className="fas fa-shield-alt text-amber-500"></i>
+                                            </div>
+                                            <div>
+                                                <h3 className="font-semibold mb-2">Enterprise Security</h3>
+                                                <p className="text-gray-600">
+                                                    Bank-grade security to protect your data and customer information
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="py-16 bg-gradient-to-r from-indigo-500 to-emerald-500">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                            <h2 className="text-3xl font-bold text-white mb-6">Ready to transform your lead generation?</h2>
+                            <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+                                Join thousands of businesses growing with OutreachGenius
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center gap-4">
+                                <button className="bg-white hover:bg-gray-100 text-indigo-600 px-8 py-4 rounded-xl font-medium transition-all">
+                                    Start Free Trial
+                                </button>
+                                <button className="border-2 border-white hover:bg-white hover:bg-opacity-10 text-white px-8 py-4 rounded-xl font-medium transition-all">
+                                    Contact Sales
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Footer */}
+                    <footer className="bg-gray-900 text-white py-12">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                <div>
+                                    <h3 className="text-sm font-semibold tracking-wider uppercase mb-4">Products</h3>
+                                    <ul className="space-y-3">
+                                        <li><a href="#" className="text-gray-400 hover:text-white">RevealerGenius</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Solomon Search</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">MarketPulse</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Pricing</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-sm font-semibold tracking-wider uppercase mb-4">Resources</h3>
+                                    <ul className="space-y-3">
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Documentation</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Guides</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">API Status</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Blog</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-sm font-semibold tracking-wider uppercase mb-4">Company</h3>
+                                    <ul className="space-y-3">
+                                        <li><a href="#" className="text-gray-400 hover:text-white">About</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Careers</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Privacy</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Terms</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-sm font-semibold tracking-wider uppercase mb-4">Connect</h3>
+                                    <ul className="space-y-3">
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Contact Us</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Twitter</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">LinkedIn</a></li>
+                                        <li><a href="#" className="text-gray-400 hover:text-white">Facebook</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                                <p className="text-gray-400">
+                                    &copy; 2023 OutreachGenius. All rights reserved.
+                                </p>
+                                <div className="flex space-x-6 mt-4 md:mt-0">
+                                    <a href="#" className="text-gray-400 hover:text-white">
+                                        <i className="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" className="text-gray-400 hover:text-white">
+                                        <i className="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" className="text-gray-400 hover:text-white">
+                                        <i className="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
